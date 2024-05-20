@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
    private Rigidbody _rigidbody;
    private Animator _animator;
 
-    [SerializeField] private FixedJoystick _fixedJoystick;
+    public FixedJoystick _fixedJoystick;
     [SerializeField] private float _speed;
 
     private void Start()
