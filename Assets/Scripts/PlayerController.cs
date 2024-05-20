@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody.velocity = new Vector3(_fixedJoystick.Horizontal * _speed, _rigidbody.velocity.y, _fixedJoystick.Vertical * _speed);
 
-        Vector3 adimationSpeed = new Vector3(_fixedJoystick.Horizontal, _rigidbody.velocity.y, _fixedJoystick.Vertical);
-        _animator.SetFloat("speed", Vector3.ClampMagnitude(adimationSpeed, 1).magnitude);
+        Vector3 animationSpeed = new Vector3(_fixedJoystick.Horizontal, _rigidbody.velocity.y, _fixedJoystick.Vertical);
+        _animator.SetFloat("speed", Vector3.ClampMagnitude(animationSpeed, 1).magnitude);
 
         if (_fixedJoystick.Horizontal != 0 || _fixedJoystick.Vertical != 0)
         {
