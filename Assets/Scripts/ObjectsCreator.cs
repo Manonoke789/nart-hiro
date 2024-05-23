@@ -1,33 +1,34 @@
 using UnityEngine;
 
-public class SpawnObjects : MonoBehaviour
+public class ObjectsCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject _inGameView;
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _camera;
+    [SerializeField] private GameObject inGameView;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mainCamera;
 
-    private GameObject inGameView;
-    private GameObject player;
-    private GameObject Joystick;
-    private GameObject MainCamera;
+    private GameObject _inGameView;
+    private GameObject _player;
+    private GameObject _joystick;
+    private GameObject _mainCamera;
 
-    private PlayerController playerController;
-    private CameraController cameraController;
+    private PlayerController _playerController;
+    private CameraController _cameraController;
     private FixedJoystick _fixedJoystick;
 
     private void Start()
     {
-        MainCamera = Instantiate(_camera, new Vector3(2, 5, -4), Quaternion.identity);
-        cameraController = MainCamera.GetComponent<CameraController>();
-        player = Instantiate(_player, new Vector3(2, 0, 2), Quaternion.identity);
-        playerController = player.GetComponent<PlayerController>();
-        inGameView = Instantiate(_inGameView);
-        Joystick = inGameView.transform.Find("Fixed Joystick").gameObject;
-        _fixedJoystick = Joystick.GetComponent<FixedJoystick>(); 
-        playerController._fixedJoystick = _fixedJoystick;
-        cameraController.Player = player;
+        _mainCamera = Instantiate(mainCamera, new Vector3(2, 5, -4), Quaternion.identity);
+        _player = Instantiate(player, new Vector3(2, 0, 2), Quaternion.identity);
+        _inGameView = Instantiate(inGameView);
 
+        _joystick = _inGameView.transform.Find("Fixed Joystick").gameObject;
 
+        _cameraController = _mainCamera.GetComponent<CameraController>();
+        _playerController = _player.GetComponent<PlayerController>();
+        _fixedJoystick = _joystick.GetComponent<FixedJoystick>(); 
+
+        _playerController.FixedJoystick = _fixedJoystick;
+        _cameraController.Player = _player;
 
     }
 }

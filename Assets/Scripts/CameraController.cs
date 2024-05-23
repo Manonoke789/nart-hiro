@@ -3,17 +3,17 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject Player;
-    private Transform playerPosition;
-    private Transform cameraPosition;
+    private Transform _playerPosition;
+    private Transform _cameraPosition;
 
     private void Start()
     {
-        cameraPosition = GetComponent<Transform>();
-        playerPosition = Player.GetComponent<Transform>();
+        _cameraPosition = GetComponent<Transform>();
+        _playerPosition = Player.GetComponent<Transform>();
+        _cameraPosition.rotation = Quaternion.Euler(30, 0, 0);
     }
     private void Update()
     {
-        cameraPosition.position = playerPosition.position + new Vector3(0, 5, -6);
-        cameraPosition.rotation = Quaternion.Euler(30, 0, 0);
+        _cameraPosition.position = _playerPosition.position + new Vector3(0, 5, -6);
     }
 }
